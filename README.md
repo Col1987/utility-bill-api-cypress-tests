@@ -97,6 +97,7 @@ utility-bill-api-cypress-tests/
 │   │   ├── api_health.cy.js
 │   │   ├── api_invoices.cy.js
 │   │   ├── api_payments.cy.js
+│   │   └── api_payments_amount_rule.cy.js   # BVA rule tests
 │   │
 │   └── support/
 │       ├── commands.js
@@ -191,6 +192,58 @@ docker run --rm   -e CYPRESS_BASE_URL="https://api-t6vbon.bunnyenv.com"   utilit
 - Expiry logic determined by observed behaviour  
 - Tests avoid assuming undocumented logic  
 
+---
+
+## 🛑 Out of Scope (Intentional Exclusions)
+
+The following areas were intentionally left out of this assignment to ensure focus, depth, and relevance to the core API behaviours defined in the Swagger documentation:
+
+### **UI Testing**
+UI-level tests were not included because:
+- Given the time constraints, API tests provide **higher risk‐based coverage**, validating logic, state transitions, error handling, and integration points far earlier than UI tests could.
+
+Focusing on API behaviour ensures:
+- Faster feedback loops  
+- More stable and deterministic test results  
+- A deeper validation of business rules (expiry, idempotency, amount-based rejection rules)  
+ 
+
+---
+
+### **Performance & Load Testing**
+Not included due to:
+- Lack of performance SLAs  
+- No stable environment for stress/load scenarios  
+- Exercise scope focused on correctness, not throughput  
+
+These would normally be executed using tools like k6, Gatling, or JMeter.
+
+---
+
+### **Security / Authentication Testing**
+Omitted because:
+- Endpoints are fully open (no OAuth/token flows)  
+- No security model or threat profile was included in the assignment  
+
+Such tests would normally include:
+- Auth handling  
+- Permission boundaries  
+- Rate-limit behaviour  
+- Input sanitisation  
+
+---
+
+### **Full Contract Testing Against JSON Schema**
+Swagger examples are valid but do not define strict JSON schema contracts for:
+- Field formats  
+- Required attributes  
+- Type constraints  
+
+Contract testing (e.g., with Pact or Schema validators) was not included for this reason.
+
+---
+
+These exclusions were made deliberately and strategically to deliver **maximum functional coverage** of the highest-risk and most business-critical backend behaviours within the available time window.
 
 
   
