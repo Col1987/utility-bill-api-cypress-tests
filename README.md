@@ -97,7 +97,6 @@ utility-bill-api-cypress-tests/
 │   │   ├── api_health.cy.js
 │   │   ├── api_invoices.cy.js
 │   │   ├── api_payments.cy.js
-│   │   └── api_payments_amount_rule.cy.js   # BVA rule tests
 │   │
 │   └── support/
 │       ├── commands.js
